@@ -1,13 +1,15 @@
 <template>
+  <!--! element plus 的组件，支持全局配置内部的组件的样式等信息 -->
   <el-config-provider :locale="currentLocale">
     <router-view />
+    <!--? 全局弹窗组件 -->
     <ReDialog />
   </el-config-provider>
 </template>
 
 <script lang="ts">
 import { defineComponent } from "vue";
-import { checkVersion } from "version-rocket";
+import { checkVersion } from "version-rocket"; //! 检测更新组件
 import { ElConfigProvider } from "element-plus";
 import en from "element-plus/lib/locale/lang/en";
 import { ReDialog } from "@/components/ReDialog";
@@ -25,7 +27,7 @@ export default defineComponent({
     }
   },
   beforeCreate() {
-    const { version, name: title } = __APP_INFO__.pkg;
+    const { version, name: title } = __APP_INFO__.pkg; //? __APP_INFO__ 变量是 vite 定义的全局变量，可以直接使用
     const { VITE_PUBLIC_PATH, MODE } = import.meta.env;
     // https://github.com/guMcrey/version-rocket/blob/main/README.zh-CN.md#api
     if (MODE === "production") {
