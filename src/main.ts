@@ -1,16 +1,16 @@
 import App from "./App.vue";
 import router from "./router";
-import { setupStore } from "@/store";
+import { setupStore } from "@/store"; //? 引入全局存储
 import ElementPlus from "element-plus";
 import { useI18n } from "@/plugins/i18n";
-import { getServerConfig } from "./config";
+import { getServerConfig } from "./config"; //? 获取服务配置，端口之类的信息
 import { createApp, Directive } from "vue";
-import { MotionPlugin } from "@vueuse/motion";
-import { useEcharts } from "@/plugins/echarts";
-import { injectResponsiveStorage } from "@/utils/responsive";
+import { MotionPlugin } from "@vueuse/motion"; //! vue 动画库
+import { useEcharts } from "@/plugins/echarts"; //? echarts 引入
+import { injectResponsiveStorage } from "@/utils/responsive"; //? 响应式存储注入
 
 import Table from "@pureadmin/table";
-import PureDescriptions from "@pureadmin/descriptions";
+import PureDescriptions from "@pureadmin/descriptions"; //? 引入描述信息
 
 // 引入重置样式
 import "./style/reset.scss";
@@ -42,20 +42,20 @@ app.component("IconifyIconOnline", IconifyIconOnline);
 app.component("FontIcon", FontIcon);
 
 // 全局注册按钮级别权限组件
-import { Auth } from "@/components/ReAuth";
+import { Auth } from "@/components/ReAuth"; //? Auth 组件怎么用
 app.component("Auth", Auth);
 
-getServerConfig(app).then(async config => {
-  app.use(router);
-  await router.isReady();
-  injectResponsiveStorage(app, config);
-  setupStore(app);
+getServerConfig(app).then(async config => { //? 获取完配置后才能注册组件及功能
+  app.use(router); 
+  await router.isReady(); //? 路由注册还提供了 isReady 方法判断是否注册完毕
+  injectResponsiveStorage(app, config); //? 把配置注入响应式存储
+  setupStore(app); //? 注册全局存储
   app
-    .use(MotionPlugin)
-    .use(useI18n)
+    .use(MotionPlugin) //! 全局注册动画组件
+    .use(useI18n) 
     .use(ElementPlus)
     .use(Table)
-    .use(PureDescriptions)
-    .use(useEcharts);
+    .use(PureDescriptions) //? 全局注册描述信息
+    .use(useEcharts); //? 全局注册echarts ，具体用法未知
   app.mount("#app");
 });
