@@ -1,7 +1,7 @@
 import { ref } from "vue";
 import reDialog from "./index.vue";
-import { useTimeoutFn } from "@vueuse/core";
-import { withInstall } from "@pureadmin/utils";
+import { useTimeoutFn } from "@vueuse/core"; //? 延迟执行函数
+import { withInstall } from "@pureadmin/utils"; //? 提供 install 注册函数
 import type {
   EventType,
   ArgsType,
