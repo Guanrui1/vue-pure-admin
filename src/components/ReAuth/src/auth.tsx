@@ -1,5 +1,5 @@
 import { defineComponent, Fragment } from "vue";
-import { hasAuth } from "@/router/utils";
+import { hasAuth } from "@/router/utils"; //? 校验权限
 
 export default defineComponent({
   name: "Auth",
