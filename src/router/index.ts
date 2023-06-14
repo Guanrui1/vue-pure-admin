@@ -1,10 +1,11 @@
-import "@/utils/sso";
+import "@/utils/sso"; //? 单点登录
 import { getConfig } from "@/config";
 import NProgress from "@/utils/progress";
 import { transformI18n } from "@/plugins/i18n";
 import { sessionKey, type DataInfo } from "@/utils/auth";
 import { useMultiTagsStoreHook } from "@/store/modules/multiTags";
 import { usePermissionStoreHook } from "@/store/modules/permission";
+//? 以上引入好像都没有用
 import {
   Router,
   createRouter,
@@ -12,11 +13,11 @@ import {
   RouteComponent
 } from "vue-router";
 import {
-  ascending,
-  getTopMenu,
-  initRouter,
-  isOneOfArray,
-  getHistoryMode,
+  ascending, //! 路由排序
+  getTopMenu, //! 获取顶级路由
+  initRouter, //! 初始化路由
+  isOneOfArray, //! 两个数组是否有交集
+  getHistoryMode, //! 获取路由历史模式
   findRouteByPath,
   handleAliveRoute,
   formatTwoStageRoutes,
