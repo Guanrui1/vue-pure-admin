@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import {
-  closeDialog,
-  dialogStore,
-  type EventType,
+  closeDialog, 
+  dialogStore, //? 弹窗存储变量，存储了所有全局弹窗的信息
+  type EventType, 
   type ButtonProps,
   type DialogOptions
 } from "./index";
@@ -122,6 +122,7 @@ function handleClose(
           />
         </i>
       </div>
+      <!--? headerRenderer 外部定义的形式是什么样的 -->
       <component
         v-else
         :is="options?.headerRenderer({ close, titleId, titleClass })"
