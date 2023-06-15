@@ -1,5 +1,6 @@
-import { http } from "@/utils/http";
+import { http } from "@/utils/http"; //? 引入 http 对象，自带 request 方法
 
+//! 定义接口返回数据类型
 type Result = {
   success: boolean;
   data?: {
